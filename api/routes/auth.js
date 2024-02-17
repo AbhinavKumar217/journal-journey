@@ -1,12 +1,11 @@
 const router = require("express").Router();
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPass = await bcrypt.hash(req.body.password, salt);
+    const hashedPass = bcrypt.hashSync(req.body.password, 10);
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
@@ -55,7 +54,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validate = await bcrypt.compare(req.body.password, user.password);
+    const validate = bcrypt.compareSync(req.body.password, user.password);
     if (!validate) {
       res.status(400).json("Invalid password!");
       return;
