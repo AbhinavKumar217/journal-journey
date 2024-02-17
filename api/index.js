@@ -11,13 +11,13 @@ const path = require("path");
 const cors = require("cors");
 
 dotenv.config();
-app.use(cors(
-  {
+app.use(
+  cors({
     origin: "https://journal-journey-client.vercel.app",
     methods: ["POST", "PUT", "GET", "DELETE"],
-    credentials: true
-  }
-))
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
@@ -30,7 +30,7 @@ mongoose
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, path.resolve(__dirname, "images"));
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
