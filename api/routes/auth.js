@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
-    const hashedPass = bcrypt.hashSync(req.body.password, 10);
+    const hashedPass = await bcrypt.hashSync(req.body.password, 10);
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validate = bcrypt.compareSync(req.body.password, user.password);
+    const validate = await bcrypt.compareSync(req.body.password, user.password);
     if (!validate) {
       res.status(400).json("Invalid password!");
       return;
