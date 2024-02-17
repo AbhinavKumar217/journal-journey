@@ -13,7 +13,7 @@ const cors = require("cors");
 dotenv.config();
 app.use(cors(
   {
-    origin: "http://localhost:3000",
+    origin: "https://journal-journey-client.vercel.app",
     methods: ["POST", "PUT", "GET", "DELETE"],
     credentials: true
   }
