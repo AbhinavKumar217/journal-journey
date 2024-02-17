@@ -14,7 +14,7 @@ export default function Write() {
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
+      const res = await axios.get("http://localhost:5000/api/categories");
       setCats(res.data);
     };
     getCats();
@@ -43,13 +43,13 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("/upload", data);
+        await axios.post("http://localhost:5000/api/upload", data);
       } catch (err) {
         window.alert(err.response.data);
       }
     }
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axios.post("http://localhost:5000/api/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (error) {}
   };

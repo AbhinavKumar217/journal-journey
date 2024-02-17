@@ -29,13 +29,13 @@ export default function Settings() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("/upload", data);
+        await axios.post("http://localhost:5000/api/upload", data);
       } catch (err) {
         window.alert(err.response.data);
       }
     }
     try {
-      const res = await axios.put("/users/" + user._id, updatedUser);
+      const res = await axios.put("http://localhost:5000/api/users/" + user._id, updatedUser);
       window.alert("User Info Updated Successfully!");
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (error) {

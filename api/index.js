@@ -8,13 +8,23 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const cors = require("cors");
 
 dotenv.config();
+app.use(cors(
+  {
+    origin: "http://localhost:3000",
+    methods: ["POST", "PUT", "GET", "DELETE"],
+    credentials: true
+  }
+))
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 mongoose
-  .connect("mongodb+srv://dummyuser:HlFGNwh8fkhIZJKw@cluster0.e7kxje8.mongodb.net/blog?retryWrites=true&w=majority")
+  .connect(
+    "mongodb+srv://dummyuser:HlFGNwh8fkhIZJKw@cluster0.e7kxje8.mongodb.net/blog?retryWrites=true&w=majority"
+  )
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
