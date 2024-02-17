@@ -6,7 +6,7 @@ import { Context } from "../../context/Context";
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
-  const PF = "https://journal-journey-api.vercel.app/images/";
+  const PF = "https://journal-journey-api.onrender.com/images/";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });

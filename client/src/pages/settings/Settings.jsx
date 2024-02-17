@@ -10,7 +10,7 @@ export default function Settings() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const PF = "https://journal-journey-api.vercel.app/images/";
+  const PF = "https://journal-journey-api.onrender.com/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,13 +29,13 @@ export default function Settings() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("https://journal-journey-api.vercel.app/api/upload", data);
+        await axios.post("https://journal-journey-api.onrender.com/api/upload", data);
       } catch (err) {
         window.alert(err.response.data);
       }
     }
     try {
-      const res = await axios.put("https://journal-journey-api.vercel.app/api/users/" + user._id, updatedUser);
+      const res = await axios.put("https://journal-journey-api.onrender.com/api/users/" + user._id, updatedUser);
       window.alert("User Info Updated Successfully!");
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (error) {

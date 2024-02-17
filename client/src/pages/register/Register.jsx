@@ -11,7 +11,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://journal-journey-api.vercel.app/api/auth/register", {
+      const res = await axios.post("https://journal-journey-api.onrender.com/api/auth/register", {
         username,
         email,
         password,

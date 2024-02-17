@@ -14,7 +14,7 @@ export default function Write() {
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("https://journal-journey-api.vercel.app/api/categories");
+      const res = await axios.get("https://journal-journey-api.onrender.com/api/categories");
       setCats(res.data);
     };
     getCats();
@@ -43,13 +43,13 @@ export default function Write() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("https://journal-journey-api.vercel.app/api/upload", data);
+        await axios.post("https://journal-journey-api.onrender.com/api/upload", data);
       } catch (err) {
         window.alert(err.response.data);
       }
     }
     try {
-      const res = await axios.post("https://journal-journey-api.vercel.app/api/posts", newPost);
+      const res = await axios.post("https://journal-journey-api.onrender.com/api/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (error) {}
   };

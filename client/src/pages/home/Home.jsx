@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("https://journal-journey-api.vercel.app/api/posts" + search);
+      const res = await axios.get("https://journal-journey-api.onrender.com/api/posts" + search);
       setPosts(res.data);
     };
     fetchPosts();
