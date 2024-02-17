@@ -9,7 +9,7 @@ export default function SinglePost() {
   const path = id.postId;
   const { user } = useContext(Context);
   const [post, setPost] = useState({});
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://journal-journey-api.vercel.app/images/";
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [cat, setCat] = useState([]);
@@ -17,7 +17,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(`http://localhost:5000/api/posts/${path}`);
+      const res = await axios.get(`https://journal-journey-api.vercel.app/api/posts/${path}`);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -28,7 +28,7 @@ export default function SinglePost() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete("http://localhost:5000/api/posts/" + path, {
+      await axios.delete("https://journal-journey-api.vercel.app/api/posts/" + path, {
         data: { username: user.username },
       });
       window.location.replace("/");
@@ -42,7 +42,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put("http://localhost:5000/api/posts/" + path, {
+      await axios.put("https://journal-journey-api.vercel.app/api/posts/" + path, {
         username: user.username,
         title,
         desc,
