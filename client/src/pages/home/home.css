@@ -1,0 +1,13 @@
+.home {
+    display: flex;
+}
+
+.noPostsSection {
+    flex: 9;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    align-items: center;
+    font-family: 'Lora', serif;
+    color: #333;
+}
