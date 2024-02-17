@@ -13,7 +13,7 @@ const cors = require("cors");
 dotenv.config();
 app.use(
   cors({
-    origin: "https://journal-journey-client.vercel.app",
+    origin: "https://journal-journey-client.onrender.com",
     methods: ["POST", "PUT", "GET", "DELETE"],
     credentials: true,
   })
